@@ -56,6 +56,8 @@ resource "google_compute_instance" "default" {
         "/home/ubuntu/pcf/scripts/create-env.sh",
         "/home/ubuntu/pcf/scripts/init-gcp.sh",
         "/home/ubuntu/pcf/scripts/install-tools.sh",
+        "cd /home/ubuntu/pcf && ln -s scripts/init-infra-gcp.sh init.sh",
+        "cd /home/ubuntu/pcf && ln -s scripts/install-pas-gcp.sh install-pas.sh",
         ]
 
         connection {
