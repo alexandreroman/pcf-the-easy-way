@@ -10,7 +10,6 @@ source "${CONF_FILE}"
 
 GCP_SERVICE_ACCOUNT_KEY=`cat "${GCP_SERVICE_ACCOUNT}"`
 TF_VARS_FILE="terraform.tfvars"
-TF_GCS_FILE="gcs.tf"
 
 echo "Creating Terraform configuration"
 /bin/cp -f "${CONF_FILE}" "${TF_VARS_FILE}"
@@ -26,5 +25,5 @@ EOF
 echo "Initializing Terraform"
 terraform init || exit 1
 
-echo "Applying Terraform"
+echo "Running Terraform"
 terraform apply -auto-approve || exit 1

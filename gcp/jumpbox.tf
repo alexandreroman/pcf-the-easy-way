@@ -40,6 +40,17 @@ resource "google_compute_instance" "default" {
     }
 
     provisioner "file" {
+        source      = "../config"
+        destination = "/home/ubuntu/pcf/config/"
+
+        connection {
+                type = "ssh"
+                user = "ubuntu"
+                private_key = "${file("~/.ssh/google_compute_engine")}"
+        }
+    }
+
+    provisioner "file" {
         source      = "secrets"
         destination = "/home/ubuntu/secrets/"
 

@@ -6,15 +6,23 @@ echo "Installing Pivotal Cloud Foundry Operations Manager ${OPSMAN_VERSION}"
 cd ${HOME}/pcf/pivotal-cf-terraforming-gcp-*/terraforming-pas/
 ln -sf ../../terraform.tfvars .
 
-echo "Running Terraform"
+echo "Initializing Terraform"
 terraform init || exit 1
+
+echo "Running Terraform"
 terraform apply --auto-approve || exit 1
+
+echo "Waiting for OpsManager to start"
+sleep 90
 
 echo "Enabling internal authentication"
 ${HOME}/pcf/scripts/configure-authentication.sh || exit 1
 
 echo "Configuring BOSH Director"
 IMPORTED_VERSION=${OPSMAN_VERSION} TARGET_PLATFORM=pas ${HOME}/pcf/scripts/configure-director-gcp.sh || exit 1
+
+echo "Installing BOSH Director ${PAS_VERSION}"
+${HOME}/pcf/scripts/apply-changes.sh || exit 1
 
 echo "Downloading PAS ${PAS_VERSION}"
 PRODUCT_NAME="Pivotal Application Service (formerly Elastic Runtime)" \

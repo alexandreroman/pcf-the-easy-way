@@ -1,13 +1,14 @@
 #!/bin/bash
 
 source "${HOME}/.env"
-GCLOUD="/snap/bin/gcloud"
 
-${GCLOUD} auth activate-service-account --key-file=${GCP_SERVICE_ACCOUNT}
-${GCLOUD} config set core/project ${GCP_PROJECT_ID}
+sudo apt-get update && sudo apt-get install -y google-cloud-sdk
 
-${GCLOUD} services enable compute.googleapis.com && \
-${GCLOUD} services enable iam.googleapis.com && \
-${GCLOUD} services enable cloudresourcemanager.googleapis.com && \
-${GCLOUD} services enable dns.googleapis.com && \
-${GCLOUD} services enable sqladmin.googleapis.com
+gcloud auth activate-service-account --key-file=${GCP_SERVICE_ACCOUNT} || exit 1
+gcloud config set core/project ${GCP_PROJECT_ID} || exit 1
+
+gcloud services enable compute.googleapis.com || exit 1
+gcloud services enable iam.googleapis.com || exit 1
+gcloud services enable cloudresourcemanager.googleapis.com || exit 1
+gcloud services enable dns.googleapis.com || exit 1
+gcloud services enable sqladmin.googleapis.com || exit 1

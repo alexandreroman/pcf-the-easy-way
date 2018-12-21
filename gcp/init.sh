@@ -20,13 +20,12 @@ fi
 echo "Initializing configuration"
 cat > ${CONF_FILE} <<-EOF
 GCP_PROJECT_ID="${PROJECT_ID}"
-GCP_GCS_BUCKET="CHANGE_ME_GCS_BUCKET"
 GCP_SERVICE_ACCOUNT="${SERVICE_ACCOUNT_FILE}"
 
 PCF_PIVNET_UAA_TOKEN="CHANGE_ME_PCF_PIVNET_UAA_TOKEN"   # see https://network.pivotal.io/users/dashboard/edit-profile
 PCF_DOMAIN_NAME="CHANGE_ME_DOMAIN_NAME"                 # e.g. cfapps.io
-PCF_SUBDOMAIN_NAME="CHANGE_ME_SUBDOMAIN_NAME"           # e.g. gcp
-PCF_OPSMAN_ADMIN_PASSWD="CHANGE_ME_OPSMAN_ADMIN_PASSWD" # e.g. for simplicity, recycle your PCF_PIVNET_UAA_TOKEN 
+PCF_SUBDOMAIN_NAME="CHANGE_ME_SUBDOMAIN_NAME"           # e.g. pas / pks
+PCF_OPSMAN_ADMIN_PASSWD="CHANGE_ME_OPSMAN_ADMIN_PASSWD" # e.g. must be 20 characters long
 PCF_REGION="CHANGE_ME_REGION"                           # e.g. europe-west1
 PCF_AZ_1="CHANGE_ME_AZ_1"                               # e.g. europe-west1-b
 PCF_AZ_2="CHANGE_ME_AZ_2"                               # e.g. europe-west1-c

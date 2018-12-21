@@ -14,10 +14,10 @@ variable "PCF_AZ_1" {
     type    = "string"
 }
 
-variable "GCP_PROJECT_ID" {
-    type = "string"
+variable "PCF_REGION" {
+    type    = "string"
 }
 
-variable "GCP_GCS_BUCKET" {
+variable "GCP_PROJECT_ID" {
     type = "string"
 }
