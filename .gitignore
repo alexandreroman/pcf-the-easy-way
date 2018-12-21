@@ -1,0 +1,6 @@
+.DS_Store
+.terraform*
+*.tfvars
+*.tfstate*
+gcs.tf
+secrets
