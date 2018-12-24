@@ -69,6 +69,7 @@ resource "google_compute_instance" "default" {
         "/home/ubuntu/pcf/scripts/install-tools.sh",
         "cd /home/ubuntu/pcf && ln -s scripts/init-infra-gcp.sh init.sh",
         "cd /home/ubuntu/pcf && ln -s scripts/install-pas-gcp.sh install-pas.sh",
+        "cd /home/ubuntu/pcf && ln -s scripts/install-pas-gcp.sh install-mysql.sh",
         ]
 
         connection {
