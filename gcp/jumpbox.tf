@@ -71,6 +71,7 @@ resource "google_compute_instance" "default" {
         "cd /home/ubuntu/pcf && ln -s scripts/install-pas-gcp.sh install-pas.sh",
         "cd /home/ubuntu/pcf && ln -s scripts/install-pas-gcp.sh install-mysql.sh",
         "cd /home/ubuntu/pcf && ln -s scripts/install-pas-gcp.sh install-rabbitmq.sh",
+        "cd /home/ubuntu/pcf && ln -s scripts/install-pas-gcp.sh install-scs.sh",
         ]
 
         connection {
