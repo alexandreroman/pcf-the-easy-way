@@ -68,6 +68,7 @@ resource "google_compute_instance" "default" {
         "/home/ubuntu/pcf/scripts/init-gcp.sh",
         "/home/ubuntu/pcf/scripts/install-tools.sh",
         "cd /home/ubuntu/pcf && ln -s scripts/init-infra-gcp.sh init.sh",
+        "cd /home/ubuntu/pcf && ln -s scripts/install-pks-gcp.sh install-pks.sh",
         "cd /home/ubuntu/pcf && ln -s scripts/install-pas-gcp.sh install-pas.sh",
         "cd /home/ubuntu/pcf && ln -s scripts/import-mysql.sh import-mysql.sh",
         "cd /home/ubuntu/pcf && ln -s scripts/import-rabbitmq.sh import-rabbitmq.sh",
