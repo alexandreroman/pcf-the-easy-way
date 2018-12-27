@@ -7,18 +7,18 @@ echo "Initializing Pivotal Cloud Foundry Operations Manager ${OPSMAN_VERSION}"
 PRODUCT_NAME="Pivotal Cloud Foundry Operations Manager" \
 DOWNLOAD_REGEX="Pivotal Cloud Foundry Ops Manager YAML for GCP" \
 PRODUCT_VERSION=${OPSMAN_VERSION} \
-  ${HOME}/pcf/scripts/download-product.sh
+  ${HOME}/pcf/scripts/download-product.sh || exit 1
 
 OPSMAN_IMAGE=$(bosh interpolate ./downloads/ops-manager_${OPSMAN_VERSION}_*/OpsManager*onGCP.yml --path /us)
 
 PRODUCT_NAME="Pivotal Application Service (formerly Elastic Runtime)" \
 DOWNLOAD_REGEX="GCP Terraform Templates" \
 PRODUCT_VERSION=${PAS_VERSION} \
-  ${HOME}/pcf/scripts/download-product.sh
+  ${HOME}/pcf/scripts/download-product.sh || exit 1
 unzip -o ${HOME}/pcf/downloads/elastic-runtime_${PAS_VERSION}_*/terraforming-gcp-*.zip -d .
 
 echo "Generating self-signed certificate"
-${HOME}/pcf/scripts/mk-ssl-cert-key.sh
+${HOME}/pcf/scripts/mk-ssl-cert-key.sh || exit 1
 
 echo "Generating Terraform configuration"
 

@@ -41,9 +41,11 @@ product-properties:
       primary: true
   .mysql_monitor.recipient_email:
     value: fbloggs@gmail.com
+  .properties.cf_networking_enable_space_developer_self_service:
+    value: true
 errand-config:
   deploy-autoscaler:
-    post-deploy-state: false
+    post-deploy-state: true
   deploy-notifications:
     post-deploy-state: false
   deploy-notifications-ui:
