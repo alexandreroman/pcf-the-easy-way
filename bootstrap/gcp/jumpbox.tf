@@ -73,6 +73,7 @@ resource "google_compute_instance" "default" {
         "cd /home/ubuntu/pcf && ln -s scripts/import-mysql.sh import-mysql.sh",
         "cd /home/ubuntu/pcf && ln -s scripts/import-rabbitmq-gcp.sh import-rabbitmq.sh",
         "cd /home/ubuntu/pcf && ln -s scripts/import-scs.sh import-scs.sh",
+        "cd /home/ubuntu/pcf && ln -s scripts/import-redis.sh import-redis.sh",
         ]
 
         connection {
