@@ -27,3 +27,11 @@ terraform init || exit 1
 
 echo "Running Terraform"
 terraform apply -auto-approve || exit 1
+
+echo ""
+echo "You successfully bootstrapped the jumpbox on GCP."
+echo ""
+echo "You can now initialize the installation process from the jumbox:"
+echo "  $ gcloud compute ssh ubuntu@jbox-pcf --zone ${PCF_AZ_1}"
+echo "  $ cd /home/ubuntu/pcf"
+echo "  $ ./init.sh"

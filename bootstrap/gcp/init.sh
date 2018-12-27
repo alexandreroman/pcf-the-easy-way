@@ -37,4 +37,5 @@ PKS_VERSION="1.2.2"
 EOF
 
 echo "Please update the configuration file: ${CONF_FILE}"
-echo "Then, you can start the installation by running: ./install.sh"
+echo "Then, you can bootstrap the jumpbox on GCP by running:"
+echo "  $ ./install.sh"

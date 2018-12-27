@@ -43,4 +43,11 @@ $(cat ${HOME}/secrets/gcp-credentials.json)
 SERVICE_ACCOUNT_KEY
 EOF
 
-
+echo ""
+echo "You are now ready to install PCF on GCP."
+echo ""
+echo "If you want to install Pivotal Application Service, run:"
+echo "  $ ./install-pas.sh"
+echo ""
+echo "If you want to install Pivotal Container Service, run:"
+echo "  $ ./install-pks.sh"
