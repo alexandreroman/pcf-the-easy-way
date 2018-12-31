@@ -24,6 +24,23 @@ IMPORTED_VERSION=${OPSMAN_VERSION} TARGET_PLATFORM=pas ${HOME}/pcf/scripts/confi
 echo "Installing BOSH Director"
 ${HOME}/pcf/scripts/apply-changes.sh || exit 1
 
+echo "Importing Ubuntu Stemcells"
+
+PRODUCT_NAME="Stemcells for PCF (Ubuntu Xenial)" \
+PRODUCT_VERSION="170.15" \
+DOWNLOAD_REGEX="Google Cloud Platform" \
+  ${HOME}/pcf/scripts/import-product.sh || exit 1
+
+PRODUCT_NAME="Stemcells for PCF (Ubuntu Xenial)" \
+PRODUCT_VERSION="97.43" \
+DOWNLOAD_REGEX="Google Cloud Platform" \
+  ${HOME}/pcf/scripts/import-product.sh || exit 1
+
+PRODUCT_NAME="Stemcells for PCF" \
+PRODUCT_VERSION="3586.60" \
+DOWNLOAD_REGEX="Ubuntu Trusty Stemcell for Google Cloud Platform" \
+  ${HOME}/pcf/scripts/import-product.sh || exit 1
+
 echo "Importing PAS ${PAS_VERSION}"
 PRODUCT_NAME="Pivotal Application Service (formerly Elastic Runtime)" \
 PRODUCT_VERSION="${PAS_VERSION}" \
