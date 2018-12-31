@@ -13,7 +13,7 @@ if [ ! -f "${SERVICE_ACCOUNT_FILE}" ]; then
     gcloud projects add-iam-policy-binding $(gcloud config get-value core/project) \
         --member "serviceAccount:terraform@$(gcloud config get-value core/project).iam.gserviceaccount.com" \
         --role 'roles/owner' || exit 1
-    gcloud iam service-accounts keys create '${SERVICE_ACCOUNT_FILE}' \
+    gcloud iam service-accounts keys create ${SERVICE_ACCOUNT_FILE} \
         --iam-account "terraform@$(gcloud config get-value core/project).iam.gserviceaccount.com" || exit 1
 fi
 
