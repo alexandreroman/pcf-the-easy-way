@@ -29,7 +29,7 @@ resource "google_compute_instance" "default" {
     }
 
     provisioner "file" {
-        source      = "../scripts"
+        source      = "../../scripts"
         destination = "/home/ubuntu/pcf/scripts/"
 
         connection {
@@ -40,7 +40,7 @@ resource "google_compute_instance" "default" {
     }
 
     provisioner "file" {
-        source      = "../config"
+        source      = "../../config"
         destination = "/home/ubuntu/pcf/config/"
 
         connection {
