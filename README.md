@@ -94,7 +94,10 @@ Make sure Google Cloud SDK is properly configured:
 $ gcloud auth login
 ```
 
-Select your GCP project.
+Select your GCP project:
+```bash
+$ gcloud config set project <project_id>
+```
 
 From the `bootstrap/gcp` directory, initialize your configuration file:
 ```bash
@@ -120,9 +123,9 @@ PCF_AZ_1="europe-west1-b"
 PCF_AZ_2="europe-west1-c"
 PCF_AZ_3="europe-west1-d"
 
-OPSMAN_VERSION="2.3.5"
-PAS_VERSION="2.3.3"
-PKS_VERSION="1.2.2"
+OPSMAN_VERSION="2.4.1"
+PAS_VERSION="2.4.1"
+PKS_VERSION="1.2.4"
 ```
 
 Note that a Google service account named `terraform` has been added to your
@@ -222,6 +225,10 @@ Using this script, the following tasks are executed:
 OpsManager is available at `http://pcf.subdomain.domain.com`.
 Use login `admin` and your password to sign in.
 
+Read the [Pivotal PKS documentation](https://docs.pivotal.io/runtimes/pks/1-2/configure-api.html)
+to setup PKS access.
+Then, you should be able to create Kubernetes clusters.
+
 ### Configure BOSH
 
 Get BOSH Director generated credentials from OpsManager.
@@ -276,6 +283,6 @@ Feel free to open issues & send PR.
 
 ## License
 
-Copyright &copy; 2018 [Pivotal Software, Inc](https://pivotal.io).
+Copyright &copy; 2019 [Pivotal Software, Inc](https://pivotal.io).
 
 This project is licensed under the [Apache Software License version 2.0](https://www.apache.org/licenses/LICENSE-2.0).
