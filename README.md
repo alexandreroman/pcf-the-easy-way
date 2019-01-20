@@ -125,7 +125,7 @@ PCF_AZ_3="europe-west1-d"
 
 OPSMAN_VERSION="2.4.1"
 PAS_VERSION="2.4.1"
-PKS_VERSION="1.2.4"
+PKS_VERSION="1.3.0"
 ```
 
 Note that a Google service account named `terraform` has been added to your
@@ -225,7 +225,7 @@ Using this script, the following tasks are executed:
 OpsManager is available at `http://pcf.subdomain.domain.com`.
 Use login `admin` and your password to sign in.
 
-Read the [Pivotal PKS documentation](https://docs.pivotal.io/runtimes/pks/1-2/configure-api.html)
+Read the [Pivotal PKS documentation](https://docs.pivotal.io/runtimes/pks/1-3/configure-api.html)
 to setup PKS access.
 Then, you should be able to create Kubernetes clusters.
 

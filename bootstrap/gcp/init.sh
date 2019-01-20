@@ -33,7 +33,7 @@ PCF_AZ_3="CHANGE_ME_AZ_3"                               # e.g. europe-west1-d
 
 OPSMAN_VERSION="2.4.1"
 PAS_VERSION="2.4.1"
-PKS_VERSION="1.2.4"
+PKS_VERSION="1.3.0"
 EOF
 
 echo "Please update the configuration file: ${CONF_FILE}"
