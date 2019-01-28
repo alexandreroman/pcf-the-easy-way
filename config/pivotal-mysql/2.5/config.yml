@@ -1,0 +1,46 @@
+product-name: pivotal-mysql
+network-properties:
+  singleton_availability_zone:
+    name: ((AZ_1))
+  other_availability_zones:
+  - name: ((AZ_1))
+  - name: ((AZ_2))
+  - name: ((AZ_3))
+  network:
+    name: pas
+  service_network:
+    name: services
+product-properties:
+  .properties.plan1_selector.single_node.az_multi_select:
+    value: [
+      ((AZ_1))
+    ]
+  .properties.plan2_selector:
+    value: Inactive
+  .properties.plan3_selector:
+    value: Inactive
+  .properties.plan4_selector:
+    value: Inactive
+  .properties.plan5_selector:
+    value: Inactive
+  .properties.plan6_selector:
+    value: Inactive
+  .properties.plan7_selector:
+    value: Inactive
+  .properties.plan8_selector:
+    value: Inactive
+  .properties.plan9_selector:
+    value: Inactive
+  .properties.backups_selector:
+    value: GCS
+  .properties.global_recipient_email:
+    value: "admin@((SUBDOMAIN_NAME)).((DOMAIN_NAME))"
+  .properties.backups_selector.gcs.project_id:
+    value: ((PROJECT_ID))
+  .properties.backups_selector.gcs.bucket_name:
+    value: ((PROJECT_ID))-mysql-backups
+  .properties.backups_selector.gcs.service_account_json:
+    value:
+      secret: '"this_is": "dummy_json"'
+  .properties.deprecated_bindings_string:
+    value: "X"
