@@ -54,6 +54,7 @@ network-assignment:
     name: ((AZ_1))
 security-configuration:
   opsmanager_root_ca_trusted_certs: true
+  trusted_certificates: ((DOMAIN_CA))
 resource-configuration:
   compilation:
     instances: 8

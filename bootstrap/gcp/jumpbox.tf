@@ -76,6 +76,7 @@ resource "google_compute_instance" "default" {
         "cd /home/ubuntu/pcf && ln -s scripts/import-redis.sh import-redis.sh",
         "cd /home/ubuntu/pcf && ln -s scripts/import-healthwatch.sh import-healthwatch.sh",
         "cd /home/ubuntu/pcf && ln -s scripts/import-metrics.sh import-metrics.sh",
+        "cd /home/ubuntu/pcf && ln -s scripts/import-harbor.sh import-harbor.sh",
         ]
 
         connection {
