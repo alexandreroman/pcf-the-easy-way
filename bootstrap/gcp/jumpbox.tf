@@ -77,6 +77,7 @@ resource "google_compute_instance" "default" {
         "cd /home/ubuntu/pcf && ln -s scripts/import-healthwatch.sh import-healthwatch.sh",
         "cd /home/ubuntu/pcf && ln -s scripts/import-metrics.sh import-metrics.sh",
         "cd /home/ubuntu/pcf && ln -s scripts/import-metrics-forwarder.sh import-metrics-forwarder.sh",
+        "cd /home/ubuntu/pcf && ln -s scripts/import-sso.sh import-sso.sh",
         "cd /home/ubuntu/pcf && ln -s scripts/import-harbor.sh import-harbor.sh",
         ]
 
