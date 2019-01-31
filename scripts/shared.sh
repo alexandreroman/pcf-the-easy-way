@@ -40,6 +40,9 @@ fi
 if [ -f "${HOME}/pcf/${PCF_DOMAIN}.crt" ]; then
   export PCF_DOMAIN_CRT=$(cat "${HOME}/pcf/${PCF_DOMAIN}.crt")
 fi
+if [ -f "${HOME}/pcf/${PCF_DOMAIN}.ca.crt" ]; then
+  export PCF_DOMAIN_CA=$(cat "${HOME}/pcf/${PCF_DOMAIN}.ca.crt")
+fi
 
 if [ -z "${TMPDIR:-}" ]; then 
   TMPDIR=/tmp

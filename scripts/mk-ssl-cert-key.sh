@@ -1,49 +1,52 @@
 #!/bin/bash
-
-set -u # explode if any env vars are not set
-
-function printline() {
-  echo && printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' - && echo $1
-}
+set -e
 
 SCRIPTDIR=$(cd $(dirname "$0") && pwd -P)
-VARS=${HOME}/.env
+source ${SCRIPTDIR}/shared.sh
 
-if ! which om > /dev/null; then
-  echo "error: scripts require 'om' to be installed (https://github.com/pivotal-cf/om/releases)"
-  exit 1
-fi
+DOMAIN=${PCF_DOMAIN}
 
-if ! which pivnet > /dev/null; then
-  echo "error: scripts require 'pivnet' to be installed (https://github.com/pivotal-cf/pivnet-cli/releases)"
-  exit 1
-fi
+: ${DOMAIN:?must be set the DNS domain root (ex: example.cf-app.com)}
+: ${KEY_BITS:=2048}
+: ${DAYS:=365}
 
-if ! which jq > /dev/null; then
-  echo "error: scripts require 'jq' to be installed (https://github.com/stedolan/jq/releases)"
-  exit 1
-fi
+openssl req -new -x509 -nodes -sha256 -newkey rsa:${KEY_BITS} -days ${DAYS} -keyout ${DOMAIN}.ca.key.pkcs8 -out ${DOMAIN}.ca.crt -config <( cat << EOF
+[ req ]
+prompt = no
+distinguished_name    = dn
 
-while read LINE; do
-  [[ ! -z ${LINE} ]] && eval export ${LINE}
-done < ${VARS}
+[ dn ]
+C  = US
+O = Pivotal
+CN = PCF the easy way
 
-export API="https://network.pivotal.io/api/v2"
-export PCF_SERVICE_ACCOUNT_JSON=$(cat ${HOME}/secrets/gcp-credentials.json)
-export PCF_PROJECT_ID=$(gcloud config get-value core/project)
+EOF
+)
 
-# calculated vars
-export PCF_DOMAIN=${PCF_SUBDOMAIN_NAME}.${PCF_DOMAIN_NAME}
-if [ -f "${HOME}/pcf/${PCF_DOMAIN}.key" ]; then
-  export PCF_DOMAIN_KEY=$(cat "${HOME}/pcf/${PCF_DOMAIN}.key")
-fi
-if [ -f "${HOME}/pcf/${PCF_DOMAIN}.crt" ]; then
-  export PCF_DOMAIN_CRT=$(cat "${HOME}/pcf/${PCF_DOMAIN}.crt")
-fi
-if [ -f "${HOME}/pcf/${PCF_DOMAIN}.ca.crt" ]; then
-  export PCF_DOMAIN_CA=$(cat "${HOME}/pcf/${PCF_DOMAIN}.ca.crt")
-fi
+openssl rsa -in ${DOMAIN}.ca.key.pkcs8 -out ${DOMAIN}.ca.key
 
-if [ -z "${TMPDIR:-}" ]; then 
-  TMPDIR=/tmp
-fi
+openssl req -nodes -sha256 -newkey rsa:${KEY_BITS} -days ${DAYS} -keyout ${DOMAIN}.key -out ${DOMAIN}.csr -config <( cat << EOF
+[ req ]
+prompt = no
+distinguished_name = dn
+req_extensions = v3_req
+
+[ dn ]
+C  = US
+O = Pivotal
+CN = *.${DOMAIN}
+
+[ v3_req ]
+subjectAltName = DNS:*.${DOMAIN}, DNS:*.apps.${DOMAIN}, DNS:*.sys.${DOMAIN}, DNS:*.login.sys.${DOMAIN}, DNS:*.uaa.sys.${DOMAIN}, DNS:*.pks.${DOMAIN}
+EOF
+)
+
+openssl x509 -req -in ${DOMAIN}.csr -CA ${DOMAIN}.ca.crt -CAkey ${DOMAIN}.ca.key.pkcs8 -CAcreateserial -out ${DOMAIN}.host.crt -days ${DAYS} -sha256 -extfile <( cat << EOF
+basicConstraints = CA:FALSE
+subjectAltName = DNS:*.${DOMAIN}, DNS:*.apps.${DOMAIN}, DNS:*.sys.${DOMAIN}, DNS:*.login.sys.${DOMAIN}, DNS:*.uaa.sys.${DOMAIN}, DNS:*.pks.${DOMAIN}
+subjectKeyIdentifier = hash
+EOF
+)
+
+cat ${DOMAIN}.host.crt ${DOMAIN}.ca.crt > ${DOMAIN}.crt
+
