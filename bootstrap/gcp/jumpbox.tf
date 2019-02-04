@@ -67,19 +67,6 @@ resource "google_compute_instance" "default" {
         "/home/ubuntu/pcf/scripts/create-env.sh",
         "/home/ubuntu/pcf/scripts/init-gcp.sh",
         "/home/ubuntu/pcf/scripts/install-tools.sh",
-        "cd /home/ubuntu/pcf && ln -s scripts/init-infra-gcp.sh init.sh",
-        "cd /home/ubuntu/pcf && ln -s scripts/install-pks-gcp.sh install-pks.sh",
-        "cd /home/ubuntu/pcf && ln -s scripts/install-pas-gcp.sh install-pas.sh",
-        "cd /home/ubuntu/pcf && ln -s scripts/import-mysql.sh import-mysql.sh",
-        "cd /home/ubuntu/pcf && ln -s scripts/import-rabbitmq.sh import-rabbitmq.sh",
-        "cd /home/ubuntu/pcf && ln -s scripts/import-scs.sh import-scs.sh",
-        "cd /home/ubuntu/pcf && ln -s scripts/import-redis.sh import-redis.sh",
-        "cd /home/ubuntu/pcf && ln -s scripts/import-healthwatch.sh import-healthwatch.sh",
-        "cd /home/ubuntu/pcf && ln -s scripts/import-metrics.sh import-metrics.sh",
-        "cd /home/ubuntu/pcf && ln -s scripts/import-metrics-forwarder.sh import-metrics-forwarder.sh",
-        "cd /home/ubuntu/pcf && ln -s scripts/import-event-alerts.sh import-event-alerts.sh",
-        "cd /home/ubuntu/pcf && ln -s scripts/import-sso.sh import-sso.sh",
-        "cd /home/ubuntu/pcf && ln -s scripts/import-harbor.sh import-harbor.sh",
         ]
 
         connection {
