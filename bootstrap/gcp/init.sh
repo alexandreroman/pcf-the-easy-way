@@ -22,6 +22,8 @@ cat > ${CONF_FILE} <<-EOF
 GCP_PROJECT_ID="${PROJECT_ID}"
 GCP_SERVICE_ACCOUNT="${SERVICE_ACCOUNT_FILE}"
 
+PCF_PLATFORM="gcp"
+
 PCF_PIVNET_UAA_TOKEN="CHANGE_ME_PCF_PIVNET_UAA_TOKEN"   # see https://network.pivotal.io/users/dashboard/edit-profile
 PCF_DOMAIN_NAME="CHANGE_ME_DOMAIN_NAME"                 # e.g. cfapps.io
 PCF_SUBDOMAIN_NAME="CHANGE_ME_SUBDOMAIN_NAME"           # e.g. dev
@@ -33,7 +35,7 @@ PCF_AZ_3="CHANGE_ME_AZ_3"                               # e.g. europe-west1-d
 
 OPSMAN_VERSION="2.4.3"
 PAS_VERSION="2.4.2"
-PKS_VERSION="1.3.0"
+PKS_VERSION="1.3.1"
 EOF
 
 echo "Please update the configuration file: ${CONF_FILE}"

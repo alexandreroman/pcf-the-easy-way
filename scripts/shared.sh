@@ -29,8 +29,6 @@ while read LINE; do
 done < ${VARS}
 
 export API="https://network.pivotal.io/api/v2"
-export PCF_SERVICE_ACCOUNT_JSON=$(cat ${HOME}/secrets/gcp-credentials.json)
-export PCF_PROJECT_ID=$(gcloud config get-value core/project)
 
 # calculated vars
 export PCF_DOMAIN=${PCF_SUBDOMAIN_NAME}.${PCF_DOMAIN_NAME}
@@ -42,6 +40,12 @@ if [ -f "${HOME}/pcf/${PCF_DOMAIN}.crt" ]; then
 fi
 if [ -f "${HOME}/pcf/${PCF_DOMAIN}.ca.crt" ]; then
   export PCF_DOMAIN_CA=$(cat "${HOME}/pcf/${PCF_DOMAIN}.ca.crt")
+fi
+if [ -f "${HOME}/pcf/opsman-ssh.pub" ]; then
+  export PCF_OPSMAN_SSH_PUB=$(cat "${HOME}/pcf/opsman-ssh.pub")
+fi
+if [ -f "${HOME}/pcf/opsman-ssh.key" ]; then
+  export PCF_OPSMAN_SSH_KEY=$(cat "${HOME}/pcf/opsman-ssh.key")
 fi
 
 if [ -z "${TMPDIR:-}" ]; then 

@@ -9,11 +9,11 @@ CONFIG_VERSION=${1}.${2}
 
 [ -z ${TARGET_PLATFORM} ]
 
-TEMPLATES=${SCRIPTDIR}/../config/director/${CONFIG_VERSION}/gcp
+TEMPLATES=${SCRIPTDIR}/../config/director/${CONFIG_VERSION}/azure
 
 om --skip-ssl-validation \
   configure-director \
     --config "${TEMPLATES}/config-${TARGET_PLATFORM}.yml" \
     --vars-env PCF \
-    --vars-env GCP
+    --vars-env AZURE
 
