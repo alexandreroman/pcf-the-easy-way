@@ -11,7 +11,7 @@ TEMPLATES=${SCRIPTDIR}/../config/${IMPORTED_NAME}/${CONFIG_VERSION}
 
 if [ "$PCF_PLATFORM" != "" ]; then
   NEW_TEMPLATES=$TEMPLATES/$PCF_PLATFORM
-  if [ -f "$NEW_TEMPLATES" ]; then
+  if [ -d "$NEW_TEMPLATES" ]; then
     TEMPLATES=$NEW_TEMPLATES
   fi
 fi
