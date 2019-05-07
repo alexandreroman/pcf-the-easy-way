@@ -40,9 +40,9 @@ PCF_SUBDOMAIN_NAME="CHANGE_ME_SUBDOMAIN_NAME"           # e.g. dev
 PCF_SHORT_NAME="CHANGE_ME"                              # unique value denoting this installation (up to 10 characters)
 PCF_OPSMAN_ADMIN_PASSWD="CHANGE_ME_OPSMAN_ADMIN_PASSWD" # e.g. must be 20 characters long
 
-OPSMAN_VERSION="2.4.3"
-PAS_VERSION="2.4.2"
-PKS_VERSION="1.3.1"
+OPSMAN_VERSION="2.4.9"
+PAS_VERSION="2.4.6"
+PKS_VERSION="1.3.6"
 EOF
 
 echo "Please update the configuration file: ${CONF_FILE}"
