@@ -33,8 +33,8 @@ PCF_AZ_1="CHANGE_ME_AZ_1"                               # e.g. europe-west1-b
 PCF_AZ_2="CHANGE_ME_AZ_2"                               # e.g. europe-west1-c
 PCF_AZ_3="CHANGE_ME_AZ_3"                               # e.g. europe-west1-d
 
-OPSMAN_VERSION="2.4.9"
-PAS_VERSION="2.4.6"
+OPSMAN_VERSION="2.5.8"
+PAS_VERSION="2.5.5"
 PKS_VERSION="1.3.6"
 EOF
 

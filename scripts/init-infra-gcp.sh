@@ -9,7 +9,7 @@ DOWNLOAD_REGEX="Pivotal Cloud Foundry Ops Manager YAML for GCP" \
 PRODUCT_VERSION=${OPSMAN_VERSION} \
   ${HOME}/pcf/scripts/download-product.sh || exit 1
 
-OPSMAN_IMAGE=$(bosh interpolate ./downloads/ops-manager_${OPSMAN_VERSION}_*/OpsManager*onGCP.yml --path /us)
+OPSMAN_IMAGE=$(bosh interpolate ./downloads/ops-manager_${OPSMAN_VERSION}_*/ops-manager-*.yml --path /us)
 
 PRODUCT_NAME="Pivotal Application Service (formerly Elastic Runtime)" \
 DOWNLOAD_REGEX="GCP Terraform Templates" \
