@@ -2,16 +2,16 @@
 
 source "${HOME}/secrets/pcf.conf"
 
-echo "Initializing Pivotal Cloud Foundry Operations Manager ${OPSMAN_VERSION}"
+echo "Initializing Pivotal Operations Manager ${OPSMAN_VERSION}"
 
-PRODUCT_NAME="Pivotal Cloud Foundry Operations Manager" \
-DOWNLOAD_REGEX="Pivotal Cloud Foundry Ops Manager YAML for GCP" \
+PRODUCT_NAME="Pivotal Operations Manager" \
+DOWNLOAD_REGEX="Pivotal Ops Manager YAML for GCP" \
 PRODUCT_VERSION=${OPSMAN_VERSION} \
   ${HOME}/pcf/scripts/download-product.sh || exit 1
 
 OPSMAN_IMAGE=$(bosh interpolate ./downloads/ops-manager_${OPSMAN_VERSION}_*/ops-manager-*.yml --path /us)
 
-PRODUCT_NAME="Pivotal Application Service (formerly Elastic Runtime)" \
+PRODUCT_NAME="Pivotal Application Service" \
 DOWNLOAD_REGEX="GCP Terraform Templates" \
 PRODUCT_VERSION=${PAS_VERSION} \
   ${HOME}/pcf/scripts/download-product.sh || exit 1
