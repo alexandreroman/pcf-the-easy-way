@@ -1,0 +1,47 @@
+iaas-configuration:
+  subscription_id: ((SUBSCRIPTION_ID))
+  tenant_id: ((TENANT_ID))
+  client_id: ((APP_ID))
+  client_secret: ((APP_SECRET))
+  resource_group_name: ((SUBDOMAIN_NAME))
+  bosh_storage_account_name: "((SHORT_NAME))director"
+  default_security_group: "((SUBDOMAIN_NAME))-bosh-deployed-vms-security-group"
+  ssh_public_key: ((OPSMAN_SSH_PUB))
+  ssh_private_key: ((OPSMAN_SSH_KEY))
+director-configuration:
+  ntp_servers_string: pool.ntp.org
+  post_deploy_enabled: true
+  resurrector_enabled: true
+  retry_bosh_deploys: true
+networks-configuration:
+  icmp_checks_enabled: false
+  networks:
+  - name: infrastructure
+    subnets:
+    - iaas_identifier: ((SUBDOMAIN_NAME))-virtual-network/((SUBDOMAIN_NAME))-infrastructure-subnet
+      cidr: 10.0.8.0/26
+      dns: 168.63.129.16
+      gateway: 10.0.8.1
+      reserved_ip_ranges: 10.0.8.1-10.0.8.9
+  - name: pas
+    subnets:
+    - iaas_identifier: ((SUBDOMAIN_NAME))-virtual-network/((SUBDOMAIN_NAME))-pas-subnet
+      cidr: 10.0.0.0/22
+      dns: 168.63.129.16
+      gateway: 10.0.0.1
+      reserved_ip_ranges: 10.0.0.1-10.0.0.9
+  - name: services
+    subnets:
+    - iaas_identifier: ((SUBDOMAIN_NAME))-virtual-network/((SUBDOMAIN_NAME))-services-subnet
+      cidr: 10.0.4.0/22
+      dns: 168.63.129.16
+      gateway: 10.0.4.1
+      reserved_ip_ranges: 10.0.4.1-10.0.4.9
+network-assignment:
+  network:
+    name: infrastructure
+security-configuration:
+  opsmanager_root_ca_trusted_certs: true
+resource-configuration:
+  compilation:
+    instances: 8

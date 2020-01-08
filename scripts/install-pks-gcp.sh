@@ -36,6 +36,11 @@ PRODUCT_VERSION="170.15" \
 DOWNLOAD_REGEX="Google Cloud Platform" \
   ${HOME}/pcf/scripts/import-product.sh || exit 1
 
+PRODUCT_NAME="Pivotal Stemcells (Ubuntu Xenial)" \
+PRODUCT_VERSION="456.77" \
+DOWNLOAD_REGEX="Google Cloud Platform" \
+  ${HOME}/pcf/scripts/import-product.sh || exit 1
+
 echo "Importing PKS ${PKS_VERSION}"
 PRODUCT_NAME="Pivotal Container Service (PKS)" \
 PRODUCT_VERSION="${PKS_VERSION}" \

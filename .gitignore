@@ -4,3 +4,4 @@
 *.tfstate*
 gcs.tf
 secrets
+pcf.conf
