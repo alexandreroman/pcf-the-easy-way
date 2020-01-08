@@ -45,12 +45,19 @@ product-properties:
     value: ((SUBDOMAIN_NAME))-pks-master@((PROJECT_ID)).iam.gserviceaccount.com
   .properties.cloud_provider.gcp.worker_service_account:
     value: ((SUBDOMAIN_NAME))-pks-worker@((PROJECT_ID)).iam.gserviceaccount.com
+  .properties.oidc_selector:
+    selected_option: disabled
+    value: disabled
   .properties.vm_extensions:
     value:
     - public_ip
+  .properties.telemetry_installation_purpose_selector:
+    selected_option: demo_or_poc
+    value: demo_or_poc
   .properties.telemetry_selector:
-    value: disabled
-errand-config:
+      selected_option: disabled
+      value: disabled
+  errand-config:
   upgrade-all-service-instances:
     post-deploy-state: false
 resource-config:
